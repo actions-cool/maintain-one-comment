@@ -1,0 +1,17 @@
+name: Maintain One Comment
+
+on: [issues, pull_request]
+
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: maintain-comment
+        uses: actions-cool/maintain-one-comment@main
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          body: |
+            Hi 😀
+            <!-- Created by actions-cool/maintain-one-comment -->
+          emojis: '+1, laugh'
+          body-include: '<!-- Created by actions-cool/maintain-one-comment -->'
