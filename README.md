@@ -53,6 +53,10 @@ jobs:
 
 - `number`: When no input, it will be the issue or PR number that triggered. When input, it is the highest priority
 
+## Note
+
+- When PR come from fork, it requires `pull_request_target`. When use `pull_request_target`, must [read](https://docs.github.com/en/actions/reference/events-that-trigger-workflows#pull_request_target)
+
 ## Emoji List
 
 | input | emoji |
