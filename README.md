@@ -9,7 +9,8 @@ Maintain just one comment in Issue and PR.
 
 ## Preview
 - Issue: https://github.com/actions-cool/maintain-one-comment/issues/1
-- PR: 
+- PR: https://github.com/actions-cool/maintain-one-comment/pull/2
+
 ## How to use?
 ```yml
 name: Maintain One Comment
