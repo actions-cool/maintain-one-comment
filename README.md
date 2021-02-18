@@ -31,7 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: maintain-comment
-        uses: actions-cool/maintain-one-comment@v1.0.0
+        uses: actions-cool/maintain-one-comment@v1.1.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           body: |
