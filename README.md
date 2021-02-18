@@ -1,5 +1,8 @@
 # 📌 Maintain One Comment
 
+![](https://img.shields.io/github/workflow/status/actions-cool/maintain-one-comment/CI?style=flat-square)
+[![](https://img.shields.io/badge/marketplace-maintain--one--comment-blueviolet?style=flat-square)](https://github.com/marketplace/actions/maintain-one-comment)
+
 Maintain just one comment in Issue and PR. 
 
 - This Action is only applicable to triggers related to issue and pull_request
