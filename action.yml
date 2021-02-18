@@ -1,16 +1,16 @@
 # https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions
-name: 'Action JS Template'
+name: 'Maintain One Comment'
 description: 'A simple javascript template for rapid development of GitHub actions.'
 author: 'xrkffgg'
 
 branding:
   # https://feathericons.com/
   # e.g. https://haya14busa.github.io/github-action-brandings/
-  icon: 'file'
-  color: 'blue'
+  icon: 'message-circle'
+  color: 'green'
 
 inputs:
-  GITHUB_TOKEN:
+  token:
     description: Secret GitHub API token to use for making API requests.
     default: ${{ github.token }}
     required: true
