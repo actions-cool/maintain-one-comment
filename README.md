@@ -44,11 +44,14 @@ jobs:
 | Name | Desc | Type | Required |
 | -- | -- | -- | -- |
 | token | GitHub token | string | ✖ |
+| number | Manually control the issue or PR number | string | ✖ |
 | body | Create comment body | string | ✔ |
 | emojis | Add [emoji](#emoji-list) | string | ✖ |
 | update-mode | Comment update mode. Options: `replace` `append`. Default: `replace` | string | ✖ |
 | comment-auth | Filter comment auth | string | ✖ |
 | body-include | Filter comment body | string | ✖ |
+
+- `number`: When no input, it will be the issue or PR number that triggered. When input, it is the highest priority
 
 ## Emoji List
 

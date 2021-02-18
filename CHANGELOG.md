@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.1.0
+
+- feat: add `number`.
+
 ## v1.0.0
 
 `2021.02.18`

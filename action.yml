@@ -19,6 +19,8 @@ inputs:
     required: true
   emojis:
     description: Add emojis to comment.
+  number:
+    description: Manually control the issue or PR number
   update-mode:
     description: Update comment mode. Default replace. Option append.
   comment-auth:
