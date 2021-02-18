@@ -1,6 +1,10 @@
 name: Maintain One Comment
 
-on: [issues, pull_request]
+on:
+  issues:
+    types: [opened, edited]
+  pull_request:
+    types: [assigned, opened, synchronize, edited]
 
 jobs:
   comment:
