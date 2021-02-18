@@ -3,6 +3,8 @@ name: Maintain One Comment
 on:
   issues:
     types: [opened, edited]
+  issue_comment:
+    types: [created, edited]
   pull_request:
     types: [assigned, opened, synchronize, edited]
 
