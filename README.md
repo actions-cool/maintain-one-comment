@@ -1,40 +1,61 @@
-<p align="center">
-  <a href="">
-    <img width="140" src="https://avatars.githubusercontent.com/u/73879334?s=200&v=4" />
-  </a>
-</p>
+# 📌 Maintain One Comment
 
-<h1 align="center">Action JavaScript Template</h1>
-<div align="center">
-A simple javascript template for rapid development of GitHub actions.
-</div>
+Maintain just one comment in Issue and PR. 
 
-![CI](https://github.com/actions-cool/action-js-template/workflows/CI/badge.svg)
+- This Action is only applicable to triggers related to issue and pull_request
+- When the **filtered comments** do not exist, will add a comment
+- When the **filtered comments** is only one, this comment will be updated
+- When the number of **filtered comments** exceeds 1, no operation will be performed
 
-## 🚀 How to use?
+## How to use?
+```yml
+name: Maintain One Comment
 
-![](https://github.com/actions-cool/resources/blob/main/image/template-js.png?raw=true)
+on: [issues, pull_request]
 
-## 📒 Catalog Introduction
-
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: maintain-comment
+        uses: actions-cool/maintain-one-comment@v1.0.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          body: |
+            Hi 😀
+            <!-- Created by actions-cool/maintain-one-comment -->
+          emojis: '+1, laugh'
+          body-include: '<!-- Created by actions-cool/maintain-one-comment -->'
 ```
-├── .github/workflows/     The CI for make sure it is packaged correctly
-├── dist                   Package the generated Aciton execution code
-├── src                    Component home directory
-│   └── main.js            Your code
-└── action.yml             Action config
-```
 
-The rest of the documents can be consulted by yourself.
+| Name | Desc | Type | Required |
+| -- | -- | -- | -- |
+| token | GitHub token | string | ✖ |
+| body | Create comment body | string | ✔ |
+| emojis | Add [emoji](#emoji-list) | string | ✖ |
+| update-mode | Comment update mode. Options: `replace` `append`. Default: `replace` | string | ✖ |
+| comment-auth | Filter comment auth | string | ✖ |
+| body-include | Filter comment body | string | ✖ |
 
-## 🤖 Command introduction
+## Emoji List
 
-| Name | Desc |
+| input | emoji |
 | -- | -- |
-| package | action build for release |
-| format | prettier write |
-| format-check | prettier check |
+| `+1` | 👍 |
+| `-1` | 👎 |
+| `laugh` | 😄 |
+| `confused` | 😕 |
+| `heart` | ❤️ |
+| `hooray` | 🎉 |
+| `rocket` | 🚀 |
+| `eyes` | 👀 |
+
+## Changelog
+
+[CHANGELOG](./CHANGELOG.md)
+
+## 💖 Who is using?
 
 ## LICENSE
 
-[MIT](https://github.com/actions-cool/action-js-template/blob/main/LICENSE)
+[MIT](./LICENSE)

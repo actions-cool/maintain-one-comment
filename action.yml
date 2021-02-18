@@ -1,6 +1,6 @@
 # https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions
 name: 'Maintain One Comment'
-description: 'A simple javascript template for rapid development of GitHub actions.'
+description: 'Maintain just one comment in Issue and PR.'
 author: 'xrkffgg'
 
 branding:
@@ -14,10 +14,17 @@ inputs:
     description: Secret GitHub API token to use for making API requests.
     default: ${{ github.token }}
     required: true
-
-#outputs:
-#  result:
-#    description: action result
+  body:
+    description: Comment content.
+    required: true
+  emojis:
+    description: Add emojis to comment.
+  update-mode:
+    description: Update comment mode. Default replace. Option append.
+  comment-auth:
+    description: Comment auth filter.
+  body-include:
+    description: Comment body filter.
 
 runs:
   using: 'node12'

@@ -1,25 +1,19 @@
 {
-  "name": "action-js-template",
-  "version": "0.0.1",
+  "name": "maintain-one-comment",
+  "version": "1.0.0",
   "private": true,
-  "description": "A javascript template for rapid development of GitHub actions.",
+  "description": "Maintain just one comment in Issue and PR.",
   "main": "src/main.js",
   "scripts": {
     "package": "ncc build",
-    "format": "prettier --write **/*.js",
-    "format-check": "prettier --check **/*.js"
+    "format": "prettier --write src/*.js",
+    "format-check": "prettier --check src/*.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/actions-cool/action-js-template",
+    "url": "https://github.com/actions-cool/maintain-one-comment",
     "branch": "main"
   },
-  "keywords": [
-    "actions",
-    "node",
-    "setup",
-    "template"
-  ],
   "author": "xrkffgg",
   "license": "MIT",
   "dependencies": {
