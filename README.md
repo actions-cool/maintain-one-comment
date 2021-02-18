@@ -7,11 +7,20 @@ Maintain just one comment in Issue and PR.
 - When the **filtered comments** is only one, this comment will be updated
 - When the number of **filtered comments** exceeds 1, no operation will be performed
 
+## Preview
+- Issue: https://github.com/actions-cool/maintain-one-comment/issues/1
+- PR: 
 ## How to use?
 ```yml
 name: Maintain One Comment
 
-on: [issues, pull_request]
+on:
+  issues:
+    types: [opened, edited]
+  issue_comment:
+    types: [created, edited]
+  pull_request:
+    types: [assigned, opened, synchronize, edited]
 
 jobs:
   comment:
