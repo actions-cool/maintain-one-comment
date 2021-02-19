@@ -7113,6 +7113,7 @@ async function run() {
         body,
       });
       core.info(`Actions: [create-comment][${body}] success!`);
+      core.setOutput('comment-id', data.id);
 
       if (emojis) {
         dealStringToArr(emojis).forEach(async item => {
@@ -7149,6 +7150,7 @@ async function run() {
       }
 
       await octokit.issues.updateComment(params);
+      core.setOutput('comment-id', commentId);
       core.info(`Actions: [update-comment][${params.body}] success!`);
     } else {
       let length = comments.length;

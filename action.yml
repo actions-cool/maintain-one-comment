@@ -28,6 +28,10 @@ inputs:
   body-include:
     description: Comment body filter.
 
+outputs:
+  comment-id:
+    description: 'Create or update comment ID'
+
 runs:
   using: 'node12'
   main: 'dist/index.js'

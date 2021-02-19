@@ -2,6 +2,7 @@
 
 ![](https://img.shields.io/github/workflow/status/actions-cool/maintain-one-comment/CI?style=flat-square)
 [![](https://img.shields.io/badge/marketplace-maintain--one--comment-blueviolet?style=flat-square)](https://github.com/marketplace/actions/maintain-one-comment)
+[![](https://img.shields.io/github/v/release/actions-cool/maintain-one-comment?style=flat-square&color=orange)](https://github.com/actions-cool/maintain-one-comment/releases)
 
 Maintain just one comment in Issue and PR. 
 
@@ -41,6 +42,8 @@ jobs:
           body-include: '<!-- Created by actions-cool/maintain-one-comment -->'
 ```
 
+### Inputs
+
 | Name | Desc | Type | Required |
 | -- | -- | -- | -- |
 | token | GitHub token | string | ✖ |
@@ -53,9 +56,14 @@ jobs:
 
 - `number`: When no input, it will be the issue or PR number that triggered. When input, it is the highest priority
 
+### Outputs
+
+- `comment-id`: Return the ID of create or updated comment.
+  - About `comment-id` use, can refer: https://github.com/actions-cool/issues-helper
+
 ## Note
 
-- When PR come from fork, it requires `pull_request_target`. When use `pull_request_target`, must [read](https://docs.github.com/en/actions/reference/events-that-trigger-workflows#pull_request_target)
+- When PR come from fork, it requires `pull_request_target` to comment (Reasons for github built-in permissions). When use `pull_request_target`, must [read](https://docs.github.com/en/actions/reference/events-that-trigger-workflows#pull_request_target)
 
 ## Emoji List
 
