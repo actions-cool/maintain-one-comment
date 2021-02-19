@@ -32,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: maintain-comment
-        uses: actions-cool/maintain-one-comment@v1.1.0
+        uses: actions-cool/maintain-one-comment@v1.2.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           body: |
