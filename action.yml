@@ -4,8 +4,7 @@ description: 'Maintain just one comment in Issue and PR.'
 author: 'xrkffgg'
 
 branding:
-  # https://feathericons.com/
-  # e.g. https://haya14busa.github.io/github-action-brandings/
+  # https://actions-cool.github.io/github-action-branding/
   icon: 'message-circle'
   color: 'green'
 
