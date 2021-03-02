@@ -82,8 +82,6 @@ jobs:
 
 [CHANGELOG](./CHANGELOG.md)
 
-## 💖 Who is using?
-
 ## LICENSE
 
 [MIT](./LICENSE)
