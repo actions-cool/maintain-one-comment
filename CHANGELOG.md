@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.2.1
+
+`2021.03.19`
+
+- fix: list comments miss.
+
 ## v1.2.0
 
 - feat: add outputs `comment-id`.

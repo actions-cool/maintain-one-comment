@@ -42,14 +42,24 @@ async function run() {
       return false;
     }
 
-    const res = await octokit.issues.listComments({
-      owner,
-      repo,
-      issue_number: number,
-    });
+    async function listComments(page = 1) {
+      let { data: comments } = await octokit.issues.listComments({
+        owner,
+        repo,
+        issue_number: number,
+        per_page: 100,
+        page,
+      });
+      if (comments.length >= 100) {
+        comments = comments.concat(await listComments(page + 1));
+      }
+      return comments;
+    }
+
+    const commentList = await listComments();
     core.info(`Actions: [find-comments][${number}] success!`);
     let comments = [];
-    res.data.forEach(item => {
+    commentList.forEach(item => {
       const a = commentAuth ? item.user.login === commentAuth : true;
       const b = bodyInclude ? item.body.includes(bodyInclude) : true;
       if (a && b) {
