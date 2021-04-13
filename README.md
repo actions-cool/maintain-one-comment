@@ -4,7 +4,7 @@
 [![](https://img.shields.io/badge/marketplace-maintain--one--comment-blueviolet?style=flat-square)](https://github.com/marketplace/actions/maintain-one-comment)
 [![](https://img.shields.io/github/v/release/actions-cool/maintain-one-comment?style=flat-square&color=orange)](https://github.com/actions-cool/maintain-one-comment/releases)
 
-Maintain just one comment in Issue and PR. 
+Maintain just one comment in Issue and PR.
 
 - This Action is only applicable to triggers related to issue and pull_request
 - When the **filtered comments** do not exist, will add a comment
@@ -32,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: maintain-comment
-        uses: actions-cool/maintain-one-comment@v1.2.0
+        uses: actions-cool/maintain-one-comment@v2.0.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           body: |
@@ -48,13 +48,14 @@ jobs:
 | -- | -- | -- | -- |
 | token | GitHub token | string | ✖ |
 | number | Manually control the issue or PR number | string | ✖ |
-| body | Create comment body | string | ✔ |
+| body | Create comment body | string | ✖ |
 | emojis | Add [emoji](#emoji-list) | string | ✖ |
 | update-mode | Comment update mode. Options: `replace` `append`. Default: `replace` | string | ✖ |
 | comment-auth | Filter comment auth | string | ✖ |
 | body-include | Filter comment body | string | ✖ |
 
 - `number`: When no input, it will be the issue or PR number that triggered. When input, it is the highest priority
+- `body`: When has 1 comment, and no body input will delete this filter comment
 
 ### Outputs
 

@@ -7058,7 +7058,7 @@ async function run() {
     const repo = context.repo.repo;
 
     // 维护评论
-    const body = core.getInput('body', { require: true });
+    const body = core.getInput('body');
     const emojis = core.getInput('emojis');
     let updateMode = core.getInput('update-mode');
     if (updateMode !== 'append') {
@@ -7115,6 +7115,7 @@ async function run() {
       }
     });
     core.info(`filter-comments: ${JSON.stringify(comments)}`);
+    core.info(`filter-comments-length: ${comments.length}`);
     if (comments.length === 0) {
       const { data } = await octokit.issues.createComment({
         owner,
@@ -7140,6 +7141,15 @@ async function run() {
       }
     } else if (comments.length === 1) {
       let commentId = comments[0].id;
+      if (!body) {
+        await octokit.issues.deleteComment({
+          owner,
+          repo,
+          comment_id: commentId,
+        });
+        core.info(`Actions: [delete-comment][${commentId}] success!`);
+        return false;
+      }
       const comment = await octokit.issues.getComment({
         owner,
         repo,

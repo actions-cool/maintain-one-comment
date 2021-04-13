@@ -15,7 +15,6 @@ inputs:
     required: true
   body:
     description: Comment content.
-    required: true
   emojis:
     description: Add emojis to comment.
   number:

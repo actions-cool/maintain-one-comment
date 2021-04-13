@@ -1,5 +1,13 @@
 # Changelog
 
+## v2.0.0
+
+`2021.04.13`
+
+- refactor
+  - remove `body` required.
+  - when no `body` input will delete the filter comment.
+
 ## v1.2.1
 
 `2021.03.19`
