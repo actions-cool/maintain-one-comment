@@ -1,4 +1,18 @@
+<!--
+🐞 Bug fix
+🚀 New feature
+💄 Perf
+📝 Docs
+⚡️ Code style
+-->
+
 # Changelog
+
+## v2.0.1
+
+`2021.10.19`
+
+- 💄 Add thanks.
 
 ## v2.0.0
 

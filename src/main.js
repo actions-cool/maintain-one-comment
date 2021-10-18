@@ -7,6 +7,8 @@ const token = core.getInput('token');
 const octokit = new Octokit({ auth: `token ${token}` });
 const context = github.context;
 
+const { dealStringToArr, THANKS } = require('actions-util');
+
 // ************************************************
 async function run() {
   try {
@@ -132,6 +134,8 @@ async function run() {
       let length = comments.length;
       core.info(`The comments length is ${length}.`);
     }
+
+    core.info(THANKS);
   } catch (error) {
     core.setFailed(error.message);
   }
@@ -146,23 +150,6 @@ function testEmoji(con) {
     core.info(`This emoji: ${con} not supported!`);
     return false;
   }
-}
-
-function dealStringToArr(para) {
-  /**
-   * in  'x1,x2,x3'
-   * out ['x1','x2','x3']
-   */
-  let arr = [];
-  if (para) {
-    const paraArr = para.split(',');
-    paraArr.forEach(it => {
-      if (it.trim()) {
-        arr.push(it.trim());
-      }
-    });
-  }
-  return arr;
 }
 
 // ************************************************
