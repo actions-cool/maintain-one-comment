@@ -2,20 +2,21 @@
   "name": "maintain-one-comment",
   "private": true,
   "description": "Maintain just one comment in Issue and PR.",
-  "main": "src/main.js",
-  "scripts": {
-    "package": "ncc build",
-    "format": "prettier --write src/*.js",
-    "format-check": "prettier --check src/*.js",
-    "tag": "node ./scripts/tag.js"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/actions-cool/maintain-one-comment",
     "branch": "main"
   },
-  "author": "xrkffgg",
   "license": "MIT",
+  "author": "xrkffgg",
+  "main": "src/main.js",
+  "scripts": {
+    "package": "ncc build",
+    "format": "prettier --write src/*.js",
+    "format-check": "prettier --check src/*.js",
+    "tag": "node ./scripts/tag.js",
+    "release": "node ./scripts/release"
+  },
   "dependencies": {
     "@actions/core": "^1.2.6",
     "@actions/github": "^4.0.0",
@@ -24,10 +25,10 @@
   "devDependencies": {
     "@umijs/fabric": "^2.5.6",
     "@vercel/ncc": "^0.27.0",
-    "prettier": "^2.2.1",
     "chalk": "^4.1.2",
     "new-github-release-url": "^1.0.0",
     "open": "^7.3.0",
+    "prettier": "^2.2.1",
     "simple-git": "^2.46.0"
   }
 }
