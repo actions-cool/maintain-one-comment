@@ -26,6 +26,10 @@ async function run() {
     execSync(`git push origin ${tagChangelog}:${tagChangelog}`);
     execSync(`git pull`);
     tag = tagChangelog;
+  } else {
+    console.log(chalk.yellow('🙄 Please add new release changelog first.'));
+    console.log('');
+    process.exit(1);
   }
 
   const tagSimple = tag.startsWith('v') ? tag.substring(0, 2) : tag.substring(0, 1);
