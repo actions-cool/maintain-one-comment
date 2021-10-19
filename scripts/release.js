@@ -12,21 +12,20 @@ const repo = 'maintain-one-comment';
 function getChangelog(content) {
   const lines = content.split('\n');
   const changeLog = [];
-  const startPattern = new RegExp(`^## `);
-  const stopPattern = /^## /; // 前一个版本
+  const pin = /^## /;
   let begin = false;
   for (let i = 0; i < lines.length; i += 1) {
     const line = lines[i];
-    if (begin && stopPattern.test(line)) {
+    if (begin && pin.test(line)) {
       break;
     }
     if (begin && line) {
       changeLog.push(line);
     }
     if (!begin) {
-      begin = startPattern.test(line);
+      begin = pin.test(line);
       if (begin) {
-        tag = line.substring(3, line.length);
+        tag = line.substring(3, line.length).trim();
       }
     }
   }

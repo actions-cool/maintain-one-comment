@@ -11,16 +11,19 @@
   "author": "xrkffgg",
   "main": "src/main.js",
   "scripts": {
+    "check-commit": "node ./scripts/check-commit.js",
     "package": "ncc build",
     "format": "prettier --write src/*.js",
     "format-check": "prettier --check src/*.js",
     "tag": "node ./scripts/tag.js",
-    "release": "node ./scripts/release"
+    "release": "node ./scripts/release",
+    "pub": "sh -e ./scripts/pub.sh"
   },
   "dependencies": {
     "@actions/core": "^1.2.6",
     "@actions/github": "^4.0.0",
-    "@octokit/rest": "^18.0.14"
+    "@octokit/rest": "^18.0.14",
+    "actions-util": "^1.0.0"
   },
   "devDependencies": {
     "@umijs/fabric": "^2.5.6",
