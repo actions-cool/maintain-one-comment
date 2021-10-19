@@ -46,6 +46,8 @@ async function run() {
 	});
 
   await open(url);
+
+  console.log(chalk.yellow('🚀 Please check tag and changelog. Then click publish!'));
 };
 
 run();
