@@ -1,3 +1,4 @@
+const chalk = require('chalk');
 const open = require('open');
 const newGithubReleaseUrl = require('new-github-release-url');
 const { readFileSync } = require('fs');
