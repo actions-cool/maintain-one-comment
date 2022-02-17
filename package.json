@@ -1,5 +1,4 @@
 {
-  "name": "maintain-one-comment",
   "private": true,
   "description": "Maintain just one comment in Issue and PR.",
   "repository": {
