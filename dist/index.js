@@ -9631,6 +9631,7 @@ const { Octokit } = __nccwpck_require__(5375);
 const token = core.getInput('token');
 const octokit = new Octokit({ auth: `token ${token}` });
 const context = github.context;
+const defaultBody = '<!-- Created by actions-cool/maintain-one-comment -->';
 
 const { dealStringToArr, THANKS } = __nccwpck_require__(55);
 
@@ -9650,7 +9651,7 @@ async function run() {
 
     // 筛选评论
     const commentAuth = core.getInput('comment-auth');
-    const bodyInclude = core.getInput('body-include');
+    const bodyInclude = core.getInput('body-include') || defaultBody;
 
     // 手动 number
     const inputNumber = core.getInput('number');
@@ -9700,13 +9701,14 @@ async function run() {
     core.info(`filter-comments: ${JSON.stringify(comments)}`);
     core.info(`filter-comments-length: ${comments.length}`);
     if (comments.length === 0) {
+      const commentBody = `${body}\n${bodyInclude}`;
       const { data } = await octokit.issues.createComment({
         owner,
         repo,
         issue_number: number,
-        body,
+        body: commentBody,
       });
-      core.info(`Actions: [create-comment][${body}] success!`);
+      core.info(`Actions: [create-comment][${commentBody}] success!`);
       core.setOutput('comment-id', data.id);
 
       if (emojis) {
@@ -9746,12 +9748,13 @@ async function run() {
         comment_id: commentId,
       };
 
+      let commentBody;
       if (updateMode === 'append') {
-        params.body = `${comment_body}\n${body}`;
+        commentBody = `${comment_body}\n${body}`;
       } else {
-        params.body = body;
+        commentBody = body;
       }
-
+      params.body = `${commentBody}\n${bodyInclude}`;
       await octokit.issues.updateComment(params);
       core.setOutput('comment-id', commentId);
       core.info(`Actions: [update-comment][${params.body}] success!`);

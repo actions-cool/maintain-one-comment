@@ -32,12 +32,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: maintain-comment
-        uses: actions-cool/maintain-one-comment@v2
+        uses: actions-cool/maintain-one-comment@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           body: |
             Hi 😀
-            <!-- Created by actions-cool/maintain-one-comment -->
           emojis: '+1, laugh'
           body-include: '<!-- Created by actions-cool/maintain-one-comment -->'
 ```

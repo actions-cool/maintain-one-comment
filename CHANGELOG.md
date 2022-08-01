@@ -8,6 +8,12 @@
 
 # Changelog
 
+## v3.0.0
+
+`2022.08.01`
+
+- refactor: add default `body-include`.
+
 ## v2.0.2
 
 `2021.10.19`
