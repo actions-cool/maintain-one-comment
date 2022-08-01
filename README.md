@@ -52,6 +52,7 @@ jobs:
 | update-mode | Comment update mode. Options: `replace` `append`. Default: `replace` | string | ✖ |
 | comment-auth | Filter comment auth | string | ✖ |
 | body-include | Filter comment body | string | ✖ |
+| delete | Will delete all filter comments. Default `false` | boolean |  ✖ |
 
 - `number`: When no input, it will be the issue or PR number that triggered. When input, it is the highest priority
 - `body`: When has 1 comment, and no body input will delete this filter comment

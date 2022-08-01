@@ -9649,9 +9649,9 @@ async function run() {
       updateMode = 'replace';
     }
 
-    // 筛选评论
     const commentAuth = core.getInput('comment-auth');
     const bodyInclude = core.getInput('body-include') || defaultBody;
+    const doDelete = core.getInput('delete') === 'true';
 
     // 手动 number
     const inputNumber = core.getInput('number');
@@ -9700,6 +9700,7 @@ async function run() {
     });
     core.info(`filter-comments: ${JSON.stringify(comments)}`);
     core.info(`filter-comments-length: ${comments.length}`);
+    let newCommentId;
     if (comments.length === 0) {
       const commentBody = `${body}\n${bodyInclude}`;
       const { data } = await octokit.issues.createComment({
@@ -9710,6 +9711,7 @@ async function run() {
       });
       core.info(`Actions: [create-comment][${commentBody}] success!`);
       core.setOutput('comment-id', data.id);
+      newCommentId = data.id;
 
       if (emojis) {
         dealStringToArr(emojis).forEach(async item => {
@@ -9761,6 +9763,22 @@ async function run() {
     } else {
       let length = comments.length;
       core.info(`The comments length is ${length}.`);
+    }
+    if (doDelete) {
+      for (const { id } of comments) {
+        await octokit.issues.deleteComment({
+          owner,
+          repo,
+          comment_id: id,
+        });
+      }
+      if (newCommentId) {
+        await octokit.issues.deleteComment({
+          owner,
+          repo,
+          comment_id: newCommentId,
+        });
+      }
     }
 
     core.info(THANKS);

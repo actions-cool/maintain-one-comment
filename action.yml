@@ -25,6 +25,8 @@ inputs:
     description: Comment auth filter.
   body-include:
     description: Comment body filter.
+  delete:
+    description: Will delete all comments
 
 outputs:
   comment-id:

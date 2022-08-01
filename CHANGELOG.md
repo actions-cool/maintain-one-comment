@@ -13,6 +13,7 @@
 `2022.08.01`
 
 - refactor: add default `body-include`.
+- feat: add `delete`.
 
 ## v2.0.2
 
