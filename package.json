@@ -19,10 +19,10 @@
     "pub": "sh -e ./scripts/pub.sh"
   },
   "dependencies": {
-    "@actions/core": "^1.2.6",
-    "@actions/github": "^4.0.0",
-    "@octokit/rest": "^18.0.14",
-    "actions-util": "^1.0.0"
+    "@actions/core": "^1.10.0",
+    "@actions/github": "^5.1.1",
+    "@octokit/rest": "^19.0.13",
+    "actions-util": "^1.1.4"
   },
   "devDependencies": {
     "@umijs/fabric": "^2.5.6",
