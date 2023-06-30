@@ -4,9 +4,19 @@
 💄 Perf
 📝 Docs
 ⚡️ Code style
+🤖 chore
+🛠 refactor
 -->
 
 # Changelog
+
+## v3.1.0
+
+`2023.06.30`
+
+- 🛠 refactor: `delete` will act on newly created comment. [#5](https://github.com/actions-cool/maintain-one-comment/pull/5) [@thyandrecardoso](https://github.com/thyandrecardoso)
+- 🤖 chore: update deps. [#6](https://github.com/actions-cool/maintain-one-comment/pull/6) [@plainheart](https://github.com/plainheart)
+
 
 ## v3.0.0
 
