@@ -75,70 +75,7 @@ async function run() {
     });
     core.info(`filter-comments: ${JSON.stringify(comments)}`);
     core.info(`filter-comments-length: ${comments.length}`);
-    let newCommentId;
-    if (comments.length === 0) {
-      const commentBody = `${body}\n${bodyInclude}`;
-      const { data } = await octokit.issues.createComment({
-        owner,
-        repo,
-        issue_number: number,
-        body: commentBody,
-      });
-      core.info(`Actions: [create-comment][${commentBody}] success!`);
-      core.setOutput('comment-id', data.id);
-      newCommentId = data.id;
 
-      if (emojis) {
-        dealStringToArr(emojis).forEach(async item => {
-          if (testEmoji(item)) {
-            await octokit.reactions.createForIssueComment({
-              owner,
-              repo,
-              comment_id: data.id,
-              content: item,
-            });
-            core.info(`Actions: [create-emoji][${item}] success!`);
-          }
-        });
-      }
-    } else if (comments.length === 1) {
-      let commentId = comments[0].id;
-      if (!body) {
-        await octokit.issues.deleteComment({
-          owner,
-          repo,
-          comment_id: commentId,
-        });
-        core.info(`Actions: [delete-comment][${commentId}] success!`);
-        return false;
-      }
-      const comment = await octokit.issues.getComment({
-        owner,
-        repo,
-        comment_id: commentId,
-      });
-      const comment_body = comment.data.body;
-
-      let params = {
-        owner,
-        repo,
-        comment_id: commentId,
-      };
-
-      let commentBody;
-      if (updateMode === 'append') {
-        commentBody = `${comment_body}\n${body}`;
-      } else {
-        commentBody = body;
-      }
-      params.body = `${commentBody}\n${bodyInclude}`;
-      await octokit.issues.updateComment(params);
-      core.setOutput('comment-id', commentId);
-      core.info(`Actions: [update-comment][${params.body}] success!`);
-    } else {
-      let length = comments.length;
-      core.info(`The comments length is ${length}.`);
-    }
     if (doDelete) {
       for (const { id } of comments) {
         await octokit.issues.deleteComment({
@@ -147,12 +84,66 @@ async function run() {
           comment_id: id,
         });
       }
-      if (newCommentId) {
-        await octokit.issues.deleteComment({
+      core.info(`Actions: [delete-comments] success!`);
+    } else {
+      if (comments.length === 0 && body.length > 0) {
+        const commentBody = `${body}\n${bodyInclude}`;
+        const { data } = await octokit.issues.createComment({
           owner,
           repo,
-          comment_id: newCommentId,
+          issue_number: number,
+          body: commentBody,
         });
+        core.info(`Actions: [create-comment][${commentBody}] success!`);
+        core.setOutput('comment-id', data.id);
+
+        if (emojis) {
+          dealStringToArr(emojis).forEach(async item => {
+            if (testEmoji(item)) {
+              await octokit.reactions.createForIssueComment({
+                owner,
+                repo,
+                comment_id: data.id,
+                content: item,
+              });
+              core.info(`Actions: [create-emoji][${item}] success!`);
+            }
+          });
+        }
+      } else if (comments.length === 1) {
+        let commentId = comments[0].id;
+        if (!body) {
+          await octokit.issues.deleteComment({
+            owner,
+            repo,
+            comment_id: commentId,
+          });
+          core.info(`Actions: [delete-comment][${commentId}] success!`);
+          return false;
+        }
+        const comment = await octokit.issues.getComment({
+          owner,
+          repo,
+          comment_id: commentId,
+        });
+        const comment_body = comment.data.body;
+
+        let params = {
+          owner,
+          repo,
+          comment_id: commentId,
+        };
+
+        let commentBody;
+        if (updateMode === 'append') {
+          commentBody = `${comment_body}\n${body}`;
+        } else {
+          commentBody = body;
+        }
+        params.body = `${commentBody}\n${bodyInclude}`;
+        await octokit.issues.updateComment(params);
+        core.setOutput('comment-id', commentId);
+        core.info(`Actions: [update-comment][${params.body}] success!`);
       }
     }
 
