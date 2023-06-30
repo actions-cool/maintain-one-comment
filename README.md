@@ -1,6 +1,6 @@
 # 📌 Maintain One Comment
 
-![](https://img.shields.io/github/workflow/status/actions-cool/maintain-one-comment/CI?style=flat-square)
+[![](https://github.com/actions-cool/maintain-one-comment/actions/workflows/test.yml/badge.svg)](https://github.com/actions-cool/maintain-one-comment/actions/workflows/test.yml)
 [![](https://img.shields.io/badge/marketplace-maintain--one--comment-blueviolet?style=flat-square)](https://github.com/marketplace/actions/maintain-one-comment)
 [![](https://img.shields.io/github/v/release/actions-cool/maintain-one-comment?style=flat-square&color=orange)](https://github.com/actions-cool/maintain-one-comment/releases)
 
