@@ -33,5 +33,5 @@ outputs:
     description: 'Create or update comment ID'
 
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'dist/index.js'
