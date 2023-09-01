@@ -10,6 +10,12 @@
 
 # Changelog
 
+## v3.1.1
+
+`2023.09.01`
+
+- 🤖 chore: bump to Node 16. [#7](https://github.com/actions-cool/maintain-one-comment/pull/7) [@gastaldi](https://github.com/gastaldi)
+
 ## v3.1.0
 
 `2023.06.30`
