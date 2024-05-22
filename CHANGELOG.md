@@ -10,6 +10,12 @@
 
 # Changelog
 
+## v3.2.0
+
+`2024.05.22`
+
+- 🚀 feat: get pr number for workflow_run & up Node 20. [#9](https://github.com/actions-cool/maintain-one-comment/pull/9) [@sxzz](https://github.com/sxzz)
+
 ## v3.1.1
 
 `2023.09.01`
