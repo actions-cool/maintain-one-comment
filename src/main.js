@@ -31,13 +31,18 @@ async function run() {
     // 手动 number
     const inputNumber = core.getInput('number');
 
-    let number;
+    let number, pr;
     if (inputNumber) {
       number = inputNumber;
     } else if (context.eventName.includes('issue')) {
       number = context.payload.issue.number;
     } else if (context.eventName.includes('pull_request')) {
       number = context.payload.pull_request.number;
+    } else if (
+      context.eventName === 'workflow_run' &&
+      (pr = context.payload.workflow_run.pull_requests[0])
+    ) {
+      number = pr.number;
     } else {
       core.info(
         `Now eventName: ${context.eventName}. And input number is empty. This Action only support issue and pull_request related!`,
